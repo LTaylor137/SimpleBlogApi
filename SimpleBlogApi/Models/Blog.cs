@@ -41,7 +41,7 @@ namespace SimpleBlogApi.Models
         }
 
         public void CheckId() {
-            char ch = '_';
+            char ch = '-';
 
             int freq = this.Id.Count(f => (f == ch));
             
