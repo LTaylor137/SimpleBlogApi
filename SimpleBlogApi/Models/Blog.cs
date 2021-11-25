@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Newtonsoft.Json;
 
 namespace SimpleBlogApi.Models
@@ -37,6 +38,16 @@ namespace SimpleBlogApi.Models
         public void CheckTitleLength() {
             if (this.Title.Length > this.MaxTitleLength)
                 this.Title = this.Title.Substring(0, this.MaxTitleLength); 
+        }
+
+        public void CheckId() {
+            char ch = '_';
+
+            int freq = this.Id.Count(f => (f == ch));
+            
+            if (freq != 4) {
+                this.Id = Guid.NewGuid().ToString();
+            }
         }
     }
 
